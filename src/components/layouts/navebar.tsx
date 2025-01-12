@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { ModeToggle } from "../mode-toggle";
 export default function Navbar() {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -82,6 +82,9 @@ export default function Navbar() {
               </a>
             </li>
           </ul>
+        </div>
+        <div className="ml-auto">
+          <ModeToggle></ModeToggle>
         </div>
       </div>
     </nav>
