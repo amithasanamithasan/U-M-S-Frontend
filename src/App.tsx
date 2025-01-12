@@ -1,5 +1,6 @@
 import { decrement, increment } from "./app/features/counter/counterSlice";
 import { useAppDispatch, useAppSelector } from "./app/hook";
+import { Button } from "./components/ui/button";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -16,16 +17,16 @@ function App() {
   return (
     <div>
       <div>
-        <button aria-label="Increment value" onClick={() => handelIncrement(5)}>
+        <Button aria-label="Increment value" onClick={() => handelIncrement(5)}>
           Increment by 5
-        </button>
-        <button aria-label="Increment value" onClick={() => handelIncrement(1)}>
+        </Button>
+        <Button aria-label="Increment value" onClick={() => handelIncrement(1)}>
           Increment
-        </button>
+        </Button>
         <span>{count}</span>
-        <button aria-label="Decrement value" onClick={handelDecrement}>
+        <Button aria-label="Decrement value" onClick={handelDecrement}>
           Decrement
-        </button>
+        </Button>
       </div>
     </div>
   );
