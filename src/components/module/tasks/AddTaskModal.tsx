@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -15,6 +16,16 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
 
 export function AddTaskModal() {
@@ -28,6 +39,10 @@ export function AddTaskModal() {
         <Button>Add Task</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
+        <DialogDescription className="sr-only">
+          {" "}
+          Fill up this add task
+        </DialogDescription>
         <DialogHeader>
           <DialogTitle>Add Task</DialogTitle>
         </DialogHeader>
@@ -38,16 +53,70 @@ export function AddTaskModal() {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel />
+                  <FormLabel>Title</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input {...field} value={field.value || ""} />
                   </FormControl>
                 </FormItem>
               )}
             />
-
-            <DialogFooter>
-              <Button type="submit">Save changes</Button>
+            {/* description */}
+            <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Description</FormLabel>
+                  <FormControl>
+                    <Textarea {...field} value={field.value || ""} />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            {/* DueDate */}
+            <FormField
+              control={form.control}
+              name="dueDate"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Due Date</FormLabel>
+                  <FormControl>
+                    <Textarea {...field} value={field.value || ""} />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            {/* Priority */}
+            <FormField
+              control={form.control}
+              name="priority"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Priority</FormLabel>
+                  <FormControl>
+                    <Select>
+                      <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Select a fruit" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          <SelectLabel>Fruits</SelectLabel>
+                          <SelectItem value="apple">Apple</SelectItem>
+                          <SelectItem value="banana">Banana</SelectItem>
+                          <SelectItem value="blueberry">Blueberry</SelectItem>
+                          <SelectItem value="grapes">Grapes</SelectItem>
+                          <SelectItem value="pineapple">Pineapple</SelectItem>
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            <DialogFooter className="py-3">
+              <Button className="p-2" type="submit">
+                Save changes
+              </Button>
             </DialogFooter>
           </form>
         </Form>
