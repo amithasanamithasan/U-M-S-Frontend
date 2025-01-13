@@ -1,8 +1,8 @@
 export interface ITask {
-  id: number;
+  id: string;
   title: string;
   description: string;
   dueDate: string;
-  iscompleted: boolean;
+  isCompleted: boolean;
   priority: "High" | "Medium" | "Low";
 }
