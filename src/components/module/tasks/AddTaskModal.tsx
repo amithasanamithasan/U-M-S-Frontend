@@ -35,11 +35,18 @@ import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
 
 import { useForm } from "react-hook-form";
+import { useAppDispatch } from "@/app/hook";
+import { addTask } from "@/app/features/counter/task/taskSlice";
+import { ITask } from "@/type";
 
 export function AddTaskModal() {
   const form = useForm();
-  const onSubmit = (data) => {
+
+  const dispatch = useAppDispatch();
+
+  const onSubmit = (data: ITask) => {
     console.log(data);
+    dispatch(addTask(data));
   };
   return (
     <Dialog>
