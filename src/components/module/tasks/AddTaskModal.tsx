@@ -34,19 +34,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
 
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useAppDispatch } from "@/app/hook";
 import { addTask } from "@/app/features/counter/task/taskSlice";
 import { ITask } from "@/type";
 
 export function AddTaskModal() {
-  const form = useForm();
+  const form = useForm<ITask>();
 
   const dispatch = useAppDispatch();
 
-  const onSubmit = (data: ITask) => {
-    console.log(data);
-    dispatch(addTask(data));
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    dispatch(addTask(data as ITask));
   };
   return (
     <Dialog>
